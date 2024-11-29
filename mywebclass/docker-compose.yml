@@ -15,7 +15,7 @@ services:
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
       - traefik.docker.network=traefik
-      - traefik.http.routers.mywebclass.rule=Host(`www.mywebclass.org`) || Host(`mywebclass.org`)
+      - traefik.http.routers.mywebclass.rule=Host(`njitstudentmarketplace.me`) || Host(`njitstudentmarketplace.me`)
       - traefik.http.routers.mywebclass.entrypoints=https
       - traefik.http.routers.mywebclass.tls=true
       - traefik.http.routers.mywebclass.tls.certresolver=simple-resolver
