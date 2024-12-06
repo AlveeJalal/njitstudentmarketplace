@@ -1,0 +1,70 @@
+.topnav-right {
+    float: right;
+  }
+
+  h1.hero-right {
+    float: right;
+  }
+ 
+  p.hero-right {
+    float: right;
+  }
+
+  .buttonblack {
+    background-color: black; /* Green */
+    color: white;
+   
+  }
+
+  .hero-image {
+    float: left;
+    width: 40%;
+    margin-right: 20px;
+    border-radius: 5px;
+  }
+
+  .container {
+    width: 90%;
+    margin: auto;
+    max-width: 1200px;
+    overflow: hidden; /* or auto or scroll */
+  }
+
+  .hero {
+    text-align: center;
+    background: gray;
+    padding: 50px 20px;
+
+  }
+
+  /* Testimonials Section */
+.testimonials {
+    background: #f8f8f8;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .testimonials h2 {
+    margin-bottom: 20px;
+    
+  }
+
+  .cards {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .card {
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 30%;
+  }
+
+  .get-started {
+    text-align: center;
+    background: gray;
+    padding: 50px 20px;
+  }
+  
