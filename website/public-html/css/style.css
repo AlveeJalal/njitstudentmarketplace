@@ -2,6 +2,12 @@
     float: right;
   }
 
+  .use-cases{
+      display:inline-block;
+      margin-right: 300px; 
+
+  }
+
   h1.hero-right {
     float: right;
   }
@@ -16,6 +22,9 @@
     color: white;
   }
 
+  #wrapper {
+    display:flex
+}
   .signinbt{
     display: inline;
     background-color: black; /* Green */
@@ -34,6 +43,20 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     
     background-color: gray;
+    width: auto; /* Adjust the width as needed */
+  }
+
+  .rounded-box-footer {
+
+    background-color: white;
+    
+    border-radius: 10px;
+    
+    padding: 10px;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+    background-color: white;
     width: auto; /* Adjust the width as needed */
   }
   .registerbt{
@@ -58,6 +81,13 @@
     margin: auto;
     max-width: 1200px;
     overflow: hidden; /* or auto or scroll */
+  }
+
+  .contact-info{
+    width:auto;
+    display:inline-block;
+    margin-right: 100px; 
+
   }
 
   .hero {
