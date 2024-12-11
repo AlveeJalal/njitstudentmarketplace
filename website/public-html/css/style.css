@@ -11,6 +11,10 @@
   h1.hero-right {
     float: right;
   }
+
+  h1.dashHeader {
+  font-size: 40px
+  }
  
   p.hero-right {
     float: right;
@@ -97,6 +101,15 @@
 
   }
 
+  .dashheaderparagraph{
+    font-size: 20px;
+  }
+
+  .dashhero {
+    text-align: center;
+    padding: 50px 20px;
+
+  }
   /* Testimonials Section. */
 .testimonials {
     background: #f8f8f8;
