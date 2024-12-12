@@ -2,6 +2,14 @@
     float: right;
   }
 
+
+  .topnav{
+
+  background-color: #fff;
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle box-shadow for a line effect */
+
+  }
   .use-cases{
       display:inline-block;
       margin-right: 300px; 
@@ -20,6 +28,9 @@
     float: right;
   }
 
+  .dashimages img{
+    size: 10px;
+  }
   .loginbt{
     display: inline;
     background-color: black; /* Green */
@@ -78,6 +89,12 @@
     width: 40%;
     margin-right: 20px;
     border-radius: 5px;
+  }
+
+  .dash-image{
+    display:inline-block;
+    width: 40%;
+
   }
 
   .container {

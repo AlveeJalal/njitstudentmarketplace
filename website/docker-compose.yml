@@ -6,6 +6,8 @@ services:
     container_name: njitstudentmarketplacehome 
     pull_policy: always
     restart: always
+    volumes:
+      - ./public-html/css:/app/css
     networks:
        - traefik
        - backend
