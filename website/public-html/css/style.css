@@ -111,6 +111,23 @@
 
   }
 
+  div #filter.card{
+
+    float:left; 
+    margin: 10px auto;
+    width: auto;
+
+    
+  }
+
+  .filterButton{
+    border-radius: 5px;
+    background-color: rgba(gray, 0.5);
+    cursor: pointer;
+    border:none
+
+
+  }
   .hero {
     text-align: center;
     background: gray;
