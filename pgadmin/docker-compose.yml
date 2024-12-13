@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  webizly:
+  pgadmin:
     image: dpage/pgadmin4 
-    container_name: mywebclass 
+    container_name: pgadmin 
     pull_policy: always
     restart: always
     environment:
@@ -18,11 +18,11 @@ services:
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
       - traefik.docker.network=traefik
-      - traefik.http.routers.mywebclass.rule=Host(`pgadmin.njitstudentmarketplace.me`) || Host(`pgadmin.njitstudentmarketplace.me`)
-      - traefik.http.routers.mywebclass.entrypoints=https
-      - traefik.http.routers.mywebclass.tls=true
-      - traefik.http.routers.mywebclass.tls.certresolver=simple-resolver
-      - traefik.http.services.mywebclass.loadbalancer.server.port=80
+      - traefik.http.routers.pgadmin.rule=Host(`pgadmin.njitstudentmarketplace.me`) || Host(`pgadmin.njitstudentmarketplace.me`)
+      - traefik.http.routers.pgadmin.entrypoints=https
+      - traefik.http.routers.pgadmin.tls=true
+      - traefik.http.routers.pgadmin.tls.certresolver=simple-resolver
+      - traefik.http.services.pgadmin.loadbalancer.server.port=80
 networks:
   traefik:
       name: traefik
