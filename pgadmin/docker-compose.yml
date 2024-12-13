@@ -6,6 +6,9 @@ services:
     container_name: mywebclass 
     pull_policy: always
     restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "YourSecurePassword"
     networks:
        - traefik
        - backend
@@ -15,7 +18,7 @@ services:
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
       - traefik.docker.network=traefik
-      - traefik.http.routers.mywebclass.rule=Host(`njitstudentmarketplace.me`) || Host(`njitstudentmarketplace.me`)
+      - traefik.http.routers.mywebclass.rule=Host(`pgadmin.njitstudentmarketplace.me`) || Host(`pgadmin.njitstudentmarketplace.me`)
       - traefik.http.routers.mywebclass.entrypoints=https
       - traefik.http.routers.mywebclass.tls=true
       - traefik.http.routers.mywebclass.tls.certresolver=simple-resolver
