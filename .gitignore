@@ -12,3 +12,4 @@
 elk/logs
 postgres/logs
 traefic/logs
+.env
