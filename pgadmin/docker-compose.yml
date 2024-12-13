@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   webizly:
-    image: dpage/pgadmin 
+    image: dpage/pgadmin4 
     container_name: mywebclass 
     pull_policy: always
     restart: always
