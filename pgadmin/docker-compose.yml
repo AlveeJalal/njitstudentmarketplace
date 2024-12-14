@@ -8,8 +8,8 @@ services:
     restart: always
     environment:
       # set up environment variables for login
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL} 
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com" 
+      PGADMIN_DEFAULT_PASSWORD: "YourSecurePassword"
     networks:
        - traefik
        - backend
