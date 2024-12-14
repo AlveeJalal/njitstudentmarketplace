@@ -16,6 +16,209 @@
 
   }
 
+
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    width: 300px; /* Adjust the width for a proper size */
+    height: 40px; /* Set a fixed height */
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    flex: 1;
+    padding: 0 10px; /* Add some padding inside */
+}
+
+.search-input::placeholder {
+    color: #aaa;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+    padding: 0;
+}
+
+.search-button span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  
+  /* Parent container for the price range */
+.price-range {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 300px; /* Adjust based on your card width */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Text container for min and max price */
+.price-range-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Slider container styling */
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Styling for the range input */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Thumb styling */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #333;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #333;
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #333;
+  cursor: pointer;
+}
+
+/* Track styling */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 5px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+input[type="range"]::-ms-track {
+  height: 5px;
+  background: #ddd;
+  border-radius: 5px;
+  border: none;
+}
+
+  
+  
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+  /* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: black;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 1px;
+  bottom: 3px;
+  width: 5px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 12px;
+    width: 12px;
+    background-color: #eee;
+  }
+
+
   h1.hero-right {
     float: right;
   }
@@ -40,6 +243,7 @@
   #wrapper {
     display:flex
 }
+
   .signinbt{
     display: inline;
     background-color: black; /* Green */
@@ -111,6 +315,23 @@
 
   }
 
+  div #filter.card{
+
+    float:left; 
+    margin: 10px auto;
+    width: auto;
+
+    
+  }
+
+  .filterButton{
+    border-radius: 5px;
+    background-color: rgba(gray, 0.5);
+    cursor: pointer;
+    border:none
+
+
+  }
   .hero {
     text-align: center;
     background: gray;
