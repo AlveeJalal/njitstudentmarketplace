@@ -16,6 +16,50 @@
 
   }
 
+
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    width: 300px; /* Adjust the width for a proper size */
+    height: 40px; /* Set a fixed height */
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    flex: 1;
+    padding: 0 10px; /* Add some padding inside */
+}
+
+.search-input::placeholder {
+    color: #aaa;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+    padding: 0;
+}
+
+.search-button span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  
   /* Parent container for the price range */
 .price-range {
   font-family: Arial, sans-serif;
@@ -199,6 +243,7 @@ input[type="range"]::-ms-track {
   #wrapper {
     display:flex
 }
+
   .signinbt{
     display: inline;
     background-color: black; /* Green */
