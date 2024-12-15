@@ -1,90 +1,115 @@
 <!DOCTYPE html>
-<!-- hh-->
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NJIT Marketplace</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NJIT Marketplace</title>
 <link rel="stylesheet" href="/css/style.css">
 </head>
+<body>
 <div class="topnav">
   <a class="active" href="index.html">NJIT Marketplace</a>
-   
-    <div class="topnav-right">
-      <a href="dashboard.html">Dashboard</a>
-      <a href="about.html">About</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-      <button>Sign in</button>
-      <button class="buttonblack">Register</button>
+  <div class="topnav-right">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="about.html">About</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+    <button>Sign in</button>
+    <button class="buttonblack">Register</button>
+  </div>
+</div>
+
+<br>
+<main>
+  <section class="dashhero">
+    <div class="container">
+      <h1 class="dashHeader">NJIT Student Marketplace a</h1>
+      <p class="dashheaderparagraph">
+        Buy, Sell, and Exchange school materials Easily and Affordably
+      </p>
+      <button>Start Selling Now</button>
+      <button class="loginbt">Explore Marketplace</button>
+    </div>
+  </section>
+
+  <section>
+    <img src="https://as1.ftcdn.net/v2/jpg/04/42/05/58/1000_F_442055863_ZnweMjpTdJGKEVzbrcpRqhSDCRDSJFku.jpg" class="dash-image">
+    <img src="https://imgix.bustle.com/lovelace/uploads/169/cd4ab7b0-597a-0133-ec57-0aa00699013d.jpg?w=414&h=277&fit=crop&crop=faces&dpr=2" class="dash-image">
+  </section>
+
+  <br><br>
+  <h2>Discover the Benefits of the NJIT Student Marketplace</h2>
+  <!-- Insert JavaScript DRUPAL API Content below:-->
+  <section class="testimonials">
+    <div class="cards" id="drupal-content">
+      <!-- Dynamic Drupal content will be inserted here -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div id="wrapper">
+    <div class="contact-info">
+      <img src="/images/social_logo.png"/>
+      <b><p>Contact Us</p></b>
+      <p>Email: support@njitmarketplace.com</p>
+      <p>Phone: (973) 596-3000</p>
+      <p>Office: NJIT Campus Center, Room 110</p>
+    </div>
+    <div class="use-cases">
+      <b><p>Use Cases</p></b>
+      <p>Academic Resources</p>
+      <p>Textbook Exchange</p>
+      <p>Campus Community</p>
+    </div>
+    <div class="use-cases">
+      <b><p>Resources</p></b>
+      <p>FAQS</p>
+      <p>Privacy Policy</p>
+      <p>Terms of Service</p>
     </div>
   </div>
 
-<br>
-  <main>
-    <section class="dashhero">
+  <div class="topnav-right">
+    <input type="text" class="rounded-box-footer" name="email" value="you@example.com"/>
+    <button type="submit" class="signinbt">Subscribe</button>
+  </div>
+</footer>
 
-      <div class="container">
-        <h1 class = "dashHeader">NJIT Student Marketplace</h1>
+<script>
+  console.log("Script running");
+  fetch('https://api.njitstudentmarketplace.me/jsonapi/node/article')
+    .then(response => response.json())
+    .then(data => {
+      console.log("Fetch complete:", data);
+      const cardsContainer = document.getElementById('drupal-content');
 
-        <p class = "dashheaderparagraph">
-          Buy, Sell, and Exhange school materials Easily and Affordably
-        <p>
+      // If no articles
+      if (!data.data || data.data.length === 0) {
+        cardsContainer.innerHTML = '<p>No articles found.</p>';
+        return;
+      }
 
-    </div>
-        <button>Start Selling Now</button> <button class="loginbt">Explore Marketplace</button>
-        
-      </div>
+      // Create card elements for each article
+      data.data.forEach(article => {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'card';
 
-    
-    </section>
-    <section>
+        const title = article.attributes.title || 'Untitled';
+        const body = article.attributes.body && article.attributes.body.value ? article.attributes.body.value : 'No content available';
 
-      <img src="https://as1.ftcdn.net/v2/jpg/04/42/05/58/1000_F_442055863_ZnweMjpTdJGKEVzbrcpRqhSDCRDSJFku.jpg" class="dash-image">
-      <img src="https://imgix.bustle.com/lovelace/uploads/169/cd4ab7b0-597a-0133-ec57-0aa00699013d.jpg?w=414&h=277&fit=crop&crop=faces&dpr=2" class="dash-image">
-    </section>
-    <br>
-    <br>
-    <h2>Discover the Benefits of the NJIT Student Marketplace</h2>
-    <!-- Insert JavaScript DRUPAL API Content below:-->
-    <section class="testimonials">
-        <div class="cards">
-          <div class="card">
-            
-          </div>
-        </div>
-      </section>
-
-           <!-- maybe grab content from drupal and paste here for footer? maybe not-->
-           <footer>
-            <div id="wrapper">
-                <div class="contact-info">
-                  <img src="/images/social_logo.png"/>
-                  <b><p>Contact Us</p></b>
-                  <p>Email: support@njitmarketplace.com</p>
-                  <p>Phone: (973) 596-3000</p>
-                  <p>Office: NJIT Campus Center, Room 110</p>
-                </div>
-                <div class="use-cases">
-                  <b><p>Use Cases</p></b>
-                  <p>Academic Resources</p>
-                  <p>Textbook Exchange</p>
-                  <p>Campus Community</p>
-                  </div>
-                  <div class="use-cases">
-                    <b><p>Resources</p></b>
-                    <p>FAQS</p>
-                    <p>Privacy Policy</p>
-                    <p>Terms of Service</p>
-                    </div>
-                </div>
-
-              
-                </div>
-                <div class="topnav-right">
-            <input type="text" class="rounded-box-footer"  name="email" value="you@example.com"/> 
-            
-            <button  type = "submit" class="signinbt"> Subscribe
-                </div>
-              </div>
-            </footer>
-        </html>
+        cardDiv.innerHTML = `
+          <h3>${title}</h3>
+          <p>${body}</p>
+        `;
+        cardsContainer.appendChild(cardDiv);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching Drupal data:', error);
+      const cardsContainer = document.getElementById('drupal-content');
+      cardsContainer.innerHTML = '<p>Error fetching content. Please try again later.</p>';
+    });
+</script>
+</body>
+</html>
