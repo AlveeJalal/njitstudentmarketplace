@@ -13,4 +13,3 @@ elk/logs
 postgres/logs
 traefik/logs
 .env
-api/drupal-data
