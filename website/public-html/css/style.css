@@ -596,3 +596,132 @@ input[type="range"]::-ms-track {
   font-size: 0.95rem;
   color: #555;
 }
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3f3;
+  padding: 2rem 1rem;
+  gap: 2rem;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-image {
+  max-width: 400px;
+  border-radius: 8px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.hero p {
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.hero button {
+  padding: 0.75rem 1.5rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.hero button:hover {
+  background-color: #555;
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 3rem 1rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+.testimonials h2 {
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  flex: 1 1 calc(30% - 1rem);
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: left;
+  transition: transform 0.2s ease-in-out;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-card p {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.testimonial-card h4 {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.testimonial-card small {
+  color: #777;
+  font-size: 0.875rem;
+}
+
+/* Getting Started Section */
+.get-started {
+  background-color: #f3f3f3;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.get-started h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.steps button {
+  width: 80%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.steps button:hover {
+  background-color: #f1f1f1;
+}
