@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Verify files
+        run: |
+          echo "Listing current directory structure:"
+          ls -R
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
