@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t alveejalal/njitstudentmarketplaceis373:register .
+          docker build -f website/Dockerfile -t alveejalal/njitstudentmarketplaceis373:register .
 
       - name: Push Docker Image to Docker Hub
         run: |
