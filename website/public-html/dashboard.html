@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NJIT Marketplace</title>
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NJIT Marketplace</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* Skeleton loader for dynamic content */
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background: #fff;
+      min-height: 150px;
+      position: relative;
+    }
+    .skeleton {
+      background-color: #ddd;
+      height: 1em;
+      margin: 5px 0;
+      border-radius: 4px;
+      animation: shimmer 1s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-color: #ddd; }
+      50% { background-color: #ccc; }
+      100% { background-color: #ddd; }
+    }
+  </style>
 </head>
 <body>
 <div class="topnav">
@@ -24,9 +49,7 @@
   <section class="dashhero">
     <div class="container">
       <h1 class="dashHeader">NJIT Student Marketplace</h1>
-      <p class="dashheaderparagraph">
-        Buy, Sell, and Exchange school materials Easily and Affordably
-      </p>
+      <p class="dashheaderparagraph">Buy, Sell, and Exchange school materials Easily and Affordably</p>
       <button>Start Selling Now</button>
       <button class="loginbt">Explore Marketplace</button>
     </div>
@@ -39,10 +62,20 @@
 
   <br><br>
   <h2>Discover the Benefits of the NJIT Student Marketplace</h2>
-  <!-- Insert JavaScript DRUPAL API Content below:-->
+  <!-- Dynamic Content Section -->
   <section class="testimonials">
     <div class="cards" id="drupal-content">
-      <!-- Dynamic Drupal content will be inserted here -->
+      <!-- Skeleton loaders as placeholders while fetching content -->
+      <div class="card">
+        <div class="skeleton" style="width: 60%;"></div>
+        <div class="skeleton" style="width: 80%;"></div>
+        <div class="skeleton" style="width: 40%;"></div>
+      </div>
+      <div class="card">
+        <div class="skeleton" style="width: 60%;"></div>
+        <div class="skeleton" style="width: 80%;"></div>
+        <div class="skeleton" style="width: 40%;"></div>
+      </div>
     </div>
   </section>
 </main>
@@ -76,13 +109,21 @@
   </div>
 </footer>
 
+<!-- JavaScript for fetching Drupal Content -->
 <script>
   console.log("Script running");
+
   fetch('https://api.njitstudentmarketplace.me/jsonapi/node/article')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
       console.log("Fetch complete:", data);
       const cardsContainer = document.getElementById('drupal-content');
+      cardsContainer.innerHTML = ''; // Clear placeholder loaders
 
       // If no articles
       if (!data.data || data.data.length === 0) {
@@ -96,7 +137,9 @@
         cardDiv.className = 'card';
 
         const title = article.attributes.title || 'Untitled';
-        const body = article.attributes.body && article.attributes.body.value ? article.attributes.body.value : 'No content available';
+        const body = article.attributes.body && article.attributes.body.value 
+          ? article.attributes.body.value 
+          : 'No content available';
 
         cardDiv.innerHTML = `
           <h3>${title}</h3>
