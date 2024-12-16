@@ -332,6 +332,140 @@ input[type="range"]::-ms-track {
 
 
   }
+
+  /* Scoped container for the listing page */
+.listing-container {
+  display: flex;
+  gap: 20px;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 1200px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Image section */
+.listing-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.listing-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background-color: #eaeaea;
+}
+
+/* Details section */
+.listing-details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.listing-details h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #333;
+}
+
+.category-button {
+  background-color: #90EE90;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.category-button:hover {
+  background-color: #81d881;
+}
+
+.listing-price {
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
+.listing-description {
+  font-size: 16px;
+  color: #666;
+}
+
+.listing-options {
+  display: flex;
+  gap: 20px;
+}
+
+.listing-option {
+  flex: 1;
+}
+
+.listing-option label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.listing-option select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Post Listing Button */
+.post-listing-button {
+  background-color: #333;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+}
+
+.post-listing-button:hover {
+  background-color: #444;
+}
+
+/* Tips Section */
+.listing-tips {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
+.tips-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.tips-content {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
   .hero {
     text-align: center;
     background: gray;
@@ -362,17 +496,22 @@ input[type="range"]::-ms-track {
 
   .cards {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap; /* Allows cards to wrap to the next row */
+    justify-content: flex-start;
+    gap: 16px; /* Adds consistent spacing between cards */
+
   }
   
-  .card {
-    background: white;
-    margin: 50px auto;
+  .cards #catalog.card  {  
+  
+    width: 100px; /* Set desired width */
+    height: 100px;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 50%;
-    
+    margin: 0; /* Adds space around each card */
+    text-align: center;
+
+
+
 
     /* width: 300px;
     padding: 20px;
@@ -382,6 +521,22 @@ input[type="range"]::-ms-track {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     font-family: Arial, sans-serif; */
+  }
+
+  .space {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card  {
+    background: white;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 50%;
+    display:inline-block;
+
   }
 
   .logincard{
