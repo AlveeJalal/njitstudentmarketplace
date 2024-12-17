@@ -1033,6 +1033,11 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.site-title:hover {
+  color: #555; /* Subtle color change on hover */
 }
 
 /* Navigation Links */
@@ -1053,19 +1058,15 @@ body {
 }
 
 /* Auth Buttons */
-.auth-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.signin-btn,
-.register-btn {
-  border: none;
+.auth-buttons a {
+  display: inline-block;
+  text-decoration: none;
   padding: 8px 16px;
   border-radius: 5px;
-  cursor: pointer;
   font-size: 0.9rem;
   font-weight: 600;
+  text-align: center;
+  cursor: pointer;
 }
 
 .signin-btn {
