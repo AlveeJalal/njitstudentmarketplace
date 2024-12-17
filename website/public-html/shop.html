@@ -149,8 +149,6 @@
 
   <!-- JavaScript to Fetch Catalog Items -->
   <script>
-      console.log("Fetching Catalog content...");
-
       fetch('https://api.njitstudentmarketplace.me/jsonapi/node/catalog_item')
         .then(response => {
           if (!response.ok) {
@@ -161,22 +159,24 @@
         .then(data => {
           const catalogContainer = document.getElementById('catalog-container');
           catalogContainer.innerHTML = ''; // Clear container
-        
+
           data.data.forEach(item => {
             const title = item.attributes.title || 'No Title';
             const price = item.attributes.field_price || 'N/A';
-          
             const imageField = item.relationships.field_image?.data?.meta?.uri?.url;
-            const imageUrl = imageField
-              ? `https://api.njitstudentmarketplace.me${imageField}`
-              : '/images/placeholder-image.png';
           
+            // Construct the correct public image URL
+            const imageUrl = imageField
+              ? `https://api.njitstudentmarketplace.me${imageField.replace(' ', '%20')}`
+              : 'https://api.njitstudentmarketplace.me/images/placeholder.png';
+          
+            // Create a catalog card dynamically
             const catalogCard = document.createElement('div');
             catalogCard.className = 'catalog-card';
           
             catalogCard.innerHTML = `
               <div class="catalog-image">
-                <img src="${imageUrl}" alt="${title}" />
+                <img src="${imageUrl}" alt="${title}" style="width: 100%; height: auto;" />
               </div>
               <div class="catalog-text">
                 <h3>${title}</h3>

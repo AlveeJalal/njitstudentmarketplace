@@ -91,54 +91,63 @@
 
   <!-- JavaScript to Fetch Benefits -->
   <script>
-    console.log("Fetching Benefits content...");
+      console.log("Fetching Benefits content...");
 
-    fetch('https://api.njitstudentmarketplace.me/jsonapi/node/benefits')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log("Fetch complete:", data);
-        const benefitsContainer = document.getElementById('benefits-container');
+      fetch('https://api.njitstudentmarketplace.me/jsonapi/node/benefits')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log("Fetch complete:", data);
+          const benefitsContainer = document.getElementById('benefits-container');
+        
+          // Clear the container
+          benefitsContainer.innerHTML = '';
+        
+          // Loop through each benefit item and create content dynamically
+          data.data.forEach(item => {
+            const title = item.attributes.title || 'No Title';
+            const description = item.attributes.body?.value || 'No Description';
+          
+            // Extract icon URL safely
+            const iconField = item.relationships.field_icon?.data?.meta?.uri?.url;
 
-        // Clear the container
-        benefitsContainer.innerHTML = '';
-
-        // Loop through each benefit item and create content dynamically
-        data.data.forEach(item => {
-          const title = item.attributes.title || 'No Title';
-          const description = item.attributes.body?.value || 'No Description';
-
-          // Extract icon URL safely (fallback to placeholder icon)
-          const iconField = item.relationships.field_icon?.data?.meta?.uri?.url;
-          const iconUrl = iconField
-            ? `https://api.njitstudentmarketplace.me${iconField.replace('/opt/drupal/web', '')}`
-            : '/images/icon.png';
-
-          // Create a benefit card
-          const benefitCard = document.createElement('div');
-          benefitCard.className = 'benefit-card';
-
-          benefitCard.innerHTML = `
-            <div class="benefit-icon">
-              <img src="${iconUrl}" alt="${title}" />
-            </div>
-            <div class="benefit-text">
-              <h3>${title}</h3>
-              <p>${description}</p>
-            </div>
-          `;
-
-          benefitsContainer.appendChild(benefitCard);
+            // Log the attempted image link
+            let imageUrl = iconField
+              ? `https://api.njitstudentmarketplace.me${iconField.replace(' ', '%20')}`
+              : '';
+          
+            console.log("Attempting image URL:", imageUrl || "No image URL found, using placeholder");
+          
+            // Fallback to placeholder if no valid URL
+            imageUrl = imageUrl || 'https://api.njitstudentmarketplace.me/images/placeholder.png';
+          
+            // Create a benefit card
+            const benefitCard = document.createElement('div');
+            benefitCard.className = 'benefit-card';
+          
+            benefitCard.innerHTML = `
+              <div class="benefit-icon">
+                <img src="${imageUrl}" alt="${title}" style="width: 100%; height: auto;" />
+              </div>
+              <div class="benefit-text">
+                <h3>${title}</h3>
+                <p>${description}</p>
+              </div>
+            `;
+            
+            benefitsContainer.appendChild(benefitCard);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching Benefits content:', error);
+          document.getElementById('benefits-container').innerHTML = `
+            <p style="text-align: center;">Error loading benefits. Please try again later.</p>`;
         });
-      })
-      .catch(error => {
-        console.error('Error fetching Benefits content:', error);
-        document.getElementById('benefits-container').innerHTML = `<p style="text-align: center;">Error loading benefits. Please try again later.</p>`;
-      });
+
   </script>
 </body>
 </html>
