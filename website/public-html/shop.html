@@ -112,68 +112,9 @@
       </aside>
 
       <!-- Catalog Cards -->
-      <div class="catalog-container">
-        <div class="catalog-card">
-          <div class="catalog-image">
-            <img src="images/algorithm-textbook.jpg" alt="Introduction to Algorithms Textbook">
-          </div>
-          <div class="catalog-info">
-            <h3 class="catalog-title">Introduction to Algorithms Textbook</h3>
-            <p class="catalog-price">$45</p>
-          </div>
-        </div>
-
-        <div class="catalog-card">
-          <div class="catalog-image">
-            <img src="images/macbook-air.jpg" alt="MacBook Air 2020 - 13 Inch">
-          </div>
-          <div class="catalog-info">
-            <h3 class="catalog-title">MacBook Air 2020 - 13 Inch</h3>
-            <p class="catalog-price">$650</p>
-          </div>
-        </div>
-
-        <div class="catalog-card">
-          <div class="catalog-image">
-            <img src="images/calculator.jpg" alt="Graphing Calculator - TI-84">
-          </div>
-          <div class="catalog-info">
-            <h3 class="catalog-title">Graphing Calculator - TI-84</h3>
-            <p class="catalog-price">$25</p>
-          </div>
-        </div>
-
-        <div class="catalog-card">
-          <div class="catalog-image">
-            <img src="images/lab-equipment.jpg" alt="Organic Chemistry Lab Equipment Set">
-          </div>
-          <div class="catalog-info">
-            <h3 class="catalog-title">Organic Chemistry Lab Equipment Set</h3>
-            <p class="catalog-price">$70</p>
-          </div>
-        </div>
-
-        <div class="catalog-card">
-          <div class="catalog-image">
-            <img src="images/mouse.jpg" alt="Wireless Mouse - Logitech MX Master">
-          </div>
-          <div class="catalog-info">
-            <h3 class="catalog-title">Wireless Mouse - Logitech MX Master</h3>
-            <p class="catalog-price">$30</p>
-          </div>
-        </div>
-
-        <div class="catalog-card">
-          <div class="catalog-image">
-            <img src="images/headphones.jpg" alt="Headphones - Sony WH-1000XM4">
-          </div>
-          <div class="catalog-info">
-            <h3 class="catalog-title">Headphones - Sony WH-1000XM4</h3>
-            <p class="catalog-price">$220</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      <div class="catalog-container" id="catalog-container">
+        <!-- Content will load dynamically here -->
+      </div>      
   </section>
 
 
@@ -232,7 +173,6 @@
         async function fetchImageURL(relationship) {
           if (!relationship?.links?.related?.href) return null;
   
-          // Ensure HTTPS
           const secureURL = relationship.links.related.href.replace(/^http:/, 'https:');
   
           try {
@@ -255,7 +195,7 @@
   
           // Fetch the image URL dynamically
           let imageUrl = await fetchImageURL(imageField);
-          
+  
           // Construct the full image URL or fallback to placeholder
           imageUrl = imageUrl
             ? `https://api.njitstudentmarketplace.me${imageUrl}`
