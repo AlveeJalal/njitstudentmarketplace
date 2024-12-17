@@ -21,176 +21,194 @@
     </div>
   </div>
 
-  <!-- Filter Section -->
-  <section class="filter-section">
-    <div class="filter-container">
+  <!-- Main Content -->
+  <section class="main-content">
+    <!-- Search and Filter Buttons at Top -->
+    <div class="search-filter-container">
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search">
+        <button class="search-button">
+          <span class="material-icons">search</span>
+        </button>
+      </div>
+
+      <!-- Filter Buttons -->
       <div class="filter-buttons">
-        <button class="filterButton">New</button>
-        <button class="filterButton">Price Ascending</button>
-        <button class="filterButton">Price Descending</button>
+        <button class="filterButton active">✔ New</button>
+        <button class="filterButton">Price ascending</button>
+        <button class="filterButton">Price descending</button>
         <button class="filterButton">Rating</button>
       </div>
+    </div>
 
-      <div class="filters">
-        <h3>Filters</h3>
-        <p>Keywords</p>
-        <div class="keyword-buttons">
-          <button class="filterButton">Popular x</button>
-          <button class="filterButton">Tools x</button>
-          <button class="filterButton">Budget-Friendly x</button>
+    <!-- Main Layout -->
+    <div class="layout-container">
+      <!-- Filter Sidebar -->
+      <aside class="filter-section">
+        <div class="filters">
+          <h3>Filters</h3>
+          <p>Keywords</p>
+          <div class="keyword-buttons">
+            <button class="filterButton">Popular x</button>
+            <button class="filterButton">Tools x</button>
+            <button class="filterButton">Budget-Friendly x</button>
+          </div>
+
+          <h4>Categories</h4>
+          <label class="container">Textbooks
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Electronics
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Lab Supplies
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+
+          <h4>Price Range</h4>
+          <div class="price-range">
+            <div class="price-range-text">
+              <span id="min-price-value">$0</span>
+              <span id="max-price-value">$500</span>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="min-price" min="0" max="500" value="0" />
+              <input type="range" id="max-price" min="0" max="500" value="500" />
+            </div>
+          </div>
+
+          <h4>Condition</h4>
+          <label class="container">Like New
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Good
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Used
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+
+          <h4>Shipping</h4>
+          <label class="container">Local Pickup
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Fast Shipping
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Free Shipping
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </aside>
+
+      <!-- Catalog Cards -->
+      <div class="catalog-container">
+        <div class="catalog-card">
+          <div class="catalog-image">
+            <img src="images/algorithm-textbook.jpg" alt="Introduction to Algorithms Textbook">
+          </div>
+          <div class="catalog-info">
+            <h3 class="catalog-title">Introduction to Algorithms Textbook</h3>
+            <p class="catalog-price">$45</p>
+          </div>
         </div>
 
-        <h4>Categories</h4>
-        <label class="container">Textbooks
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-        </label>
-        <label class="container">Electronics
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
-        <label class="container">Lab Supplies
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
-
-        <h4>Price Range</h4>
-        <div class="price-range">
-          <div class="price-range-text">
-            <span id="min-price-value">$0</span>
-            <span id="max-price-value">$500</span>
+        <div class="catalog-card">
+          <div class="catalog-image">
+            <img src="images/macbook-air.jpg" alt="MacBook Air 2020 - 13 Inch">
           </div>
-          <div class="slider-container">
-            <input type="range" id="min-price" min="0" max="500" value="0" />
-            <input type="range" id="max-price" min="0" max="500" value="500" />
+          <div class="catalog-info">
+            <h3 class="catalog-title">MacBook Air 2020 - 13 Inch</h3>
+            <p class="catalog-price">$650</p>
           </div>
         </div>
 
-        <h4>Condition</h4>
-        <label class="container">Like New
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
-        <label class="container">Good
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-        </label>
-        <label class="container">Used
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
+        <div class="catalog-card">
+          <div class="catalog-image">
+            <img src="images/calculator.jpg" alt="Graphing Calculator - TI-84">
+          </div>
+          <div class="catalog-info">
+            <h3 class="catalog-title">Graphing Calculator - TI-84</h3>
+            <p class="catalog-price">$25</p>
+          </div>
+        </div>
 
-        <h4>Shipping</h4>
-        <label class="container">Local Pickup
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
-        <label class="container">Fast Shipping
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-        </label>
-        <label class="container">Free Shipping
-          <input type="checkbox">
-          <span class="checkmark"></span>
-        </label>
+        <div class="catalog-card">
+          <div class="catalog-image">
+            <img src="images/lab-equipment.jpg" alt="Organic Chemistry Lab Equipment Set">
+          </div>
+          <div class="catalog-info">
+            <h3 class="catalog-title">Organic Chemistry Lab Equipment Set</h3>
+            <p class="catalog-price">$70</p>
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <div class="catalog-image">
+            <img src="images/mouse.jpg" alt="Wireless Mouse - Logitech MX Master">
+          </div>
+          <div class="catalog-info">
+            <h3 class="catalog-title">Wireless Mouse - Logitech MX Master</h3>
+            <p class="catalog-price">$30</p>
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <div class="catalog-image">
+            <img src="images/headphones.jpg" alt="Headphones - Sony WH-1000XM4">
+          </div>
+          <div class="catalog-info">
+            <h3 class="catalog-title">Headphones - Sony WH-1000XM4</h3>
+            <p class="catalog-price">$220</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Catalog Section -->
-  <section class="catalog-section">
-    <div class="search-container">
-      <input type="text" placeholder="Search" class="search-input">
-      <button class="search-button">
-        <span class="material-icons">search</span>
-      </button>
-    </div>
-    <div class="catalog-container" id="catalog-container">
-      <!-- Items fetched dynamically via JavaScript -->
-    </div>
-  </section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-wrapper" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; padding: 2rem; background-color: #f9f9f9; border-top: 1px solid #ddd;">
-    <!-- Contact Information -->
-    <div class="footer-column contact-info" style="flex: 1; min-width: 250px;">
-      <img src="/images/social_logo.png" alt="Social Logo" style="margin-bottom: 1rem;">
-      <b><p>Contact Us</p></b>
-      <p>Email: support@njitmarketplace.com</p>
-      <p>Phone: (973) 596-3000</p>
-      <p>Office: NJIT Campus Center, Room 110</p>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrapper">
+      <div class="footer-column contact-info">
+        <img src="/images/social_logo.png" alt="Social Logo">
+        <b><p>Contact Us</p></b>
+        <p>Email: support@njitmarketplace.com</p>
+        <p>Phone: (973) 596-3000</p>
+        <p>Office: NJIT Campus Center, Room 110</p>
+      </div>
+
+      <div class="footer-column">
+        <b><p>Use Cases</p></b>
+        <p>Academic Resources</p>
+        <p>Textbook Exchange</p>
+        <p>Campus Community</p>
+      </div>
+
+      <div class="footer-column">
+        <b><p>Resources</p></b>
+        <p>FAQs</p>
+        <p>Privacy Policy</p>
+        <p>Terms of Service</p>
+      </div>
+
+      <div class="footer-column newsletter">
+        <b><p>Subscribe to Our Newsletter</p></b>
+        <input type="text" class="rounded-box-footer" name="email" placeholder="you@example.com">
+        <button type="submit" class="subscribe-btn">Subscribe</button>
+      </div>
     </div>
-
-    <!-- Use Cases -->
-    <div class="footer-column" style="flex: 1; min-width: 250px;">
-      <b><p>Use Cases</p></b>
-      <p>Academic Resources</p>
-      <p>Textbook Exchange</p>
-      <p>Campus Community</p>
-    </div>
-
-    <!-- Resources -->
-    <div class="footer-column" style="flex: 1; min-width: 250px;">
-      <b><p>Resources</p></b>
-      <p>FAQs</p>
-      <p>Privacy Policy</p>
-      <p>Terms of Service</p>
-    </div>
-
-    <!-- Newsletter Subscription -->
-    <div class="footer-column newsletter" style="flex: 1; min-width: 250px;">
-      <b><p>Subscribe to Our Newsletter</p></b>
-      <input type="text" class="rounded-box-footer" name="email" placeholder="you@example.com" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid #ccc; border-radius: 5px;">
-      <button type="submit" class="subscribe-btn" style="padding: 0.5rem 1rem; background-color: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Subscribe</button>
-    </div>
-  </div>
-</footer>
-
-  <!-- JavaScript to Fetch Catalog Items -->
-  <script>
-      console.log("Fetching Catalog content...");
-
-      fetch('https://api.njitstudentmarketplace.me/jsonapi/node/catalog_item')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          const catalogContainer = document.getElementById('catalog-container');
-          catalogContainer.innerHTML = ''; // Clear container
-        
-          data.data.forEach(item => {
-            const title = item.attributes.title || 'No Title';
-            const price = item.attributes.field_price || 'N/A';
-          
-            const imageField = item.relationships.field_image?.data?.meta?.uri?.url;
-            const imageUrl = imageField
-              ? `https://api.njitstudentmarketplace.me${imageField}`
-              : '/images/placeholder-image.png';
-          
-            const catalogCard = document.createElement('div');
-            catalogCard.className = 'catalog-card';
-          
-            catalogCard.innerHTML = `
-              <div class="catalog-image">
-                <img src="${imageUrl}" alt="${title}" />
-              </div>
-              <div class="catalog-text">
-                <h3>${title}</h3>
-                <p><strong>Price: $${price}</strong></p>
-              </div>
-            `;
-            
-            catalogContainer.appendChild(catalogCard);
-          });
-        })
-        .catch(error => {
-          console.error('Error fetching Catalog content:', error);
-          document.getElementById('catalog-container').innerHTML = `<p>Error loading catalog. Please try again later.</p>`;
-        });
-  </script>
+  </footer>
 </body>
 </html>
