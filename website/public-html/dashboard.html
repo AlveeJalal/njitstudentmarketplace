@@ -114,7 +114,9 @@
 
           // Extract icon URL safely (fallback to placeholder icon)
           const iconField = item.relationships.field_icon?.data?.meta?.uri?.url;
-          const iconUrl = iconField ? `https://api.njitstudentmarketplace.me${iconField}` : '/images/icon.png';
+          const iconUrl = iconField
+            ? `https://api.njitstudentmarketplace.me${iconField.startsWith('/') ? iconField : `/${iconField}`}`
+            : '/images/icon.png';
 
           // Create a benefit card
           const benefitCard = document.createElement('div');
