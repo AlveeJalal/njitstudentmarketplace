@@ -232,7 +232,6 @@
         async function fetchImageURL(relationship) {
           if (!relationship?.links?.related?.href) return null;
   
-          // Ensure HTTPS
           const secureURL = relationship.links.related.href.replace(/^http:/, 'https:');
   
           try {
@@ -255,7 +254,7 @@
   
           // Fetch the image URL dynamically
           let imageUrl = await fetchImageURL(imageField);
-          
+  
           // Construct the full image URL or fallback to placeholder
           imageUrl = imageUrl
             ? `https://api.njitstudentmarketplace.me${imageUrl}`
