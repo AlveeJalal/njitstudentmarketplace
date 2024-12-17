@@ -18,3 +18,6 @@ DockerHub Links:
 Figma Links:
 * [Entire Figma Project](https://www.figma.com/design/i7DApmcc8OpZV7wAYhBlVD/Hero-1?node-id=0-1&t=wgFtjak6FyqjFKzK-1)
 * [Figma Project Copy with login/registration](https://www.figma.com/design/plRGiKUwz5lLPAMPnbjQBh/Hero-1-(Copy)?node-id=2009-386&t=jgOPsPB58YxNyzyt-1)
+
+PGADMIN UI Link:
+* [PGADMIN Link](https://pgadmin.njitstudentmarketplace.me/login?next=/)
