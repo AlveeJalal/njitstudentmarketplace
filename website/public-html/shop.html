@@ -214,48 +214,69 @@
 
   <!-- JavaScript to Fetch Catalog Items -->
   <script>
-      fetch('https://api.njitstudentmarketplace.me/jsonapi/node/catalog_item')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          const catalogContainer = document.getElementById('catalog-container');
-          catalogContainer.innerHTML = ''; // Clear container
-
-          data.data.forEach(item => {
-            const title = item.attributes.title || 'No Title';
-            const price = item.attributes.field_price || 'N/A';
-            const imageField = item.relationships.field_image?.data?.meta?.uri?.url;
+    fetch('https://api.njitstudentmarketplace.me/jsonapi/node/catalog_item')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(async data => {
+        const catalogContainer = document.getElementById('catalog-container');
+        catalogContainer.innerHTML = ''; // Clear container
+  
+        // Function to fetch related file resource
+        async function fetchImageURL(relationship) {
+          if (!relationship?.links?.related?.href) return null;
+  
+          // Ensure the URL uses HTTPS
+          const secureURL = relationship.links.related.href.replace(/^http:/, 'https:');
+  
+          const response = await fetch(secureURL);
+          if (!response.ok) return null;
+  
+          const fileData = await response.json();
+          return fileData.data?.attributes?.uri?.url || null;
+        }
+  
+        // Loop through each catalog item
+        for (const item of data.data) {
+          const title = item.attributes.title || 'No Title';
+          const price = item.attributes.field_price || 'N/A';
+          const imageField = item.relationships.field_image;
+  
+          // Fetch the image URL dynamically
+          let imageUrl = await fetchImageURL(imageField);
           
-            // Construct the correct public image URL
-            const imageUrl = imageField
-              ? `https://api.njitstudentmarketplace.me${imageField.replace(' ', '%20')}`
-              : 'https://api.njitstudentmarketplace.me/images/placeholder.png';
+          // Construct the full image URL or use placeholder
+          imageUrl = imageUrl
+            ? `https://api.njitstudentmarketplace.me${imageUrl}`
+            : 'https://via.placeholder.com/150?text=No+Image';
+  
+          console.log("Resolved Image URL:", imageUrl);
+  
+          // Create a catalog card dynamically
+          const catalogCard = document.createElement('div');
+          catalogCard.className = 'catalog-card';
+  
+          catalogCard.innerHTML = `
+            <div class="catalog-image">
+              <img src="${imageUrl}" alt="${title}" style="width: 100%; height: auto;" />
+            </div>
+            <div class="catalog-text">
+              <h3>${title}</h3>
+              <p><strong>Price: $${price}</strong></p>
+            </div>
+          `;
           
-            // Create a catalog card dynamically
-            const catalogCard = document.createElement('div');
-            catalogCard.className = 'catalog-card';
-          
-            catalogCard.innerHTML = `
-              <div class="catalog-image">
-                <img src="${imageUrl}" alt="${title}" style="width: 100%; height: auto;" />
-              </div>
-              <div class="catalog-text">
-                <h3>${title}</h3>
-                <p><strong>Price: $${price}</strong></p>
-              </div>
-            `;
-            
-            catalogContainer.appendChild(catalogCard);
-          });
-        })
-        .catch(error => {
-          console.error('Error fetching Catalog content:', error);
-          document.getElementById('catalog-container').innerHTML = `<p>Error loading catalog. Please try again later.</p>`;
-        });
-  </script>
+          catalogContainer.appendChild(catalogCard);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching Catalog content:', error);
+        document.getElementById('catalog-container').innerHTML = `
+          <p>Error loading catalog. Please try again later.</p>`;
+      });
+  </script>  
 </body>
 </html>
