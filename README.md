@@ -14,3 +14,7 @@ DockerHub Links:
 *  [DockerHub Repo](https://hub.docker.com/repository/docker/alveejalal/njitstudentmarketplaceis373/general)
 *  [Current and updated working image](https://hub.docker.com/repository/docker/alveejalal/njitstudentmarketplaceis373/tags/register/sha256-abf51a80796dda13320aa93b19f46415d22eb5e954464651896f6ff29bc680b1)
 *  [Original Image that isn't really used](https://hub.docker.com/repository/docker/alveejalal/njitstudentmarketplaceis373/tags/latest/sha256-dcb3ebfd8352f5c54bc9bac26df6bff6b8c93f181db5c48a6a61c594ccb2f5a4)
+
+Figma Links:
+* [Entire Figma Project](https://www.figma.com/design/i7DApmcc8OpZV7wAYhBlVD/Hero-1?node-id=0-1&t=wgFtjak6FyqjFKzK-1)
+* [Figma Project Copy with login/registration](https://www.figma.com/design/plRGiKUwz5lLPAMPnbjQBh/Hero-1-(Copy)?node-id=2009-386&t=jgOPsPB58YxNyzyt-1)
