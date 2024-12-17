@@ -91,54 +91,76 @@
 
   <!-- JavaScript to Fetch Benefits -->
   <script>
-    console.log("Fetching Benefits content...");
+      console.log("Fetching Benefits content...");
 
-    fetch('https://api.njitstudentmarketplace.me/jsonapi/node/benefits')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log("Fetch complete:", data);
-        const benefitsContainer = document.getElementById('benefits-container');
-
-        // Clear the container
-        benefitsContainer.innerHTML = '';
-
-        // Loop through each benefit item and create content dynamically
-        data.data.forEach(item => {
-          const title = item.attributes.title || 'No Title';
-          const description = item.attributes.body?.value || 'No Description';
-
-          // Extract icon URL safely (fallback to placeholder icon)
-          const iconField = item.relationships.field_icon?.data?.meta?.uri?.url;
-          const iconUrl = iconField
-            ? `https://api.njitstudentmarketplace.me${iconField.replace('/opt/drupal/web', '')}`
-            : '/images/icon.png';
-
-          // Create a benefit card
-          const benefitCard = document.createElement('div');
-          benefitCard.className = 'benefit-card';
-
-          benefitCard.innerHTML = `
-            <div class="benefit-icon">
-              <img src="${iconUrl}" alt="${title}" />
-            </div>
-            <div class="benefit-text">
-              <h3>${title}</h3>
-              <p>${description}</p>
-            </div>
-          `;
-
-          benefitsContainer.appendChild(benefitCard);
+      fetch('https://api.njitstudentmarketplace.me/jsonapi/node/benefits')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(async data => {
+          console.log("Fetch complete:", data);
+          const benefitsContainer = document.getElementById('benefits-container');
+        
+          // Clear the container
+          benefitsContainer.innerHTML = '';
+        
+          // Function to fetch related file resource
+          async function fetchIconURL(relationship) {
+            if (!relationship?.links?.related?.href) return null;
+          
+            // Ensure the URL uses HTTPS
+            const secureURL = relationship.links.related.href.replace(/^http:/, 'https:');
+          
+            const response = await fetch(secureURL);
+            if (!response.ok) return null;
+          
+            const fileData = await response.json();
+            return fileData.data?.attributes?.uri?.url || null;
+          }
+        
+          // Loop through each benefit item
+          for (const item of data.data) {
+            const title = item.attributes.title || 'No Title';
+            const description = item.attributes.body?.value || 'No Description';
+          
+            // Fetch the icon URL dynamically
+            const iconField = item.relationships.field_icon;
+            let imageUrl = await fetchIconURL(iconField);
+          
+            // Construct the full image URL if available
+            imageUrl = imageUrl
+              ? `https://api.njitstudentmarketplace.me${imageUrl}`
+              : 'https://via.placeholder.com/150?text=No+Image';
+          
+            console.log("Resolved Image URL:", imageUrl);
+          
+            // Create a benefit card
+            const benefitCard = document.createElement('div');
+            benefitCard.className = 'benefit-card';
+          
+            benefitCard.innerHTML = `
+              <div class="benefit-icon">
+                <img src="${imageUrl}" alt="${title}" style="width: 100%; height: auto;" />
+              </div>
+              <div class="benefit-text">
+                <h3>${title}</h3>
+                <p>${description}</p>
+              </div>
+            `;
+            
+            benefitsContainer.appendChild(benefitCard);
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching Benefits content:', error);
+          document.getElementById('benefits-container').innerHTML = `
+            <p style="text-align: center;">Error loading benefits. Please try again later.</p>`;
         });
-      })
-      .catch(error => {
-        console.error('Error fetching Benefits content:', error);
-        document.getElementById('benefits-container').innerHTML = `<p style="text-align: center;">Error loading benefits. Please try again later.</p>`;
-      });
+
+
   </script>
 </body>
 </html>
