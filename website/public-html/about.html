@@ -7,22 +7,23 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Top Navigation -->
-  <div class="topnav">
-    <a class="active" href="index.html">NJIT Marketplace</a>
-    <div class="topnav-right">
-      <a href="dashboard.html">Dashboard</a>
-      <a href="about.html">About</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-      <form action="login.html" class="loginbt">
-        <button type="submit">Sign in</button>
-      </form>
-      <form action="register.html" class="registerbt">
-        <button type="submit" class="registerbt">Register</button>
-      </form>
-    </div>
+<!-- Top Navigation -->
+<div class="topnav">
+  <div class="logo">
+    <img src="images/logo.png" alt="NJIT Marketplace Logo" class="header-logo">
+    <span class="site-title">NJIT Marketplace</span>
   </div>
+  <div class="navigation-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="about.html">About</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="auth-buttons">
+    <button class="signin-btn">Sign In</button>
+    <button class="register-btn">Register</button>
+  </div>
+</div>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -63,7 +64,6 @@
   <!-- Footer -->
   <footer>
     <div class="footer-wrapper">
-      <!-- Contact Information -->
       <div class="footer-column contact-info">
         <img src="/images/social_logo.png" alt="Social Logo">
         <b><p>Contact Us</p></b>
@@ -72,7 +72,6 @@
         <p>Office: NJIT Campus Center, Room 110</p>
       </div>
 
-      <!-- Use Cases -->
       <div class="footer-column">
         <b><p>Use Cases</p></b>
         <p>Academic Resources</p>
@@ -80,7 +79,6 @@
         <p>Campus Community</p>
       </div>
 
-      <!-- Resources -->
       <div class="footer-column">
         <b><p>Resources</p></b>
         <p>FAQs</p>
@@ -88,14 +86,14 @@
         <p>Terms of Service</p>
       </div>
 
-      <!-- Newsletter -->
-      <div class="footer-column newsletter">
-        <b><p>Subscribe to Our Newsletter</p></b>
-        <input type="text" class="rounded-box-footer" placeholder="you@example.com">
-        <button type="submit" class="subscribe-btn">Subscribe</button>
-      </div>
+    <!-- Newsletter Subscription -->
+    <div class="footer-column newsletter" style="flex: 1; min-width: 250px;">
+      <b><p>Subscribe to Our Newsletter</p></b>
+      <input type="text" class="rounded-box-footer" name="email" placeholder="you@example.com" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid #ccc; border-radius: 5px;">
+      <button type="submit" class="subscribe-btn" style="padding: 0.5rem 1rem; background-color: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Subscribe</button>
     </div>
-  </footer>
+  </div>
+</footer>
 
   <!-- Fetch Testimonials -->
   <script>
