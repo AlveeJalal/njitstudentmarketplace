@@ -92,7 +92,7 @@
   <!-- JavaScript to Fetch Benefits -->
   <script>
       console.log("Fetching Benefits content...");
-
+        
       fetch('https://api.njitstudentmarketplace.me/jsonapi/node/benefits')
         .then(response => {
           if (!response.ok) {
@@ -100,34 +100,37 @@
           }
           return response.json();
         })
-        .then(data => {
+        .then(async data => {
           console.log("Fetch complete:", data);
           const benefitsContainer = document.getElementById('benefits-container');
         
           // Clear the container
           benefitsContainer.innerHTML = '';
         
-          // Loop through each benefit item and create content dynamically
-          data.data.forEach(item => {
+          // Function to fetch related file resource
+          async function fetchIconURL(relationship) {
+            if (!relationship?.links?.related?.href) return null;
+            const response = await fetch(relationship.links.related.href);
+            if (!response.ok) return null;
+            const fileData = await response.json();
+            return fileData.data?.attributes?.uri?.url || null;
+          }
+        
+          // Loop through each benefit item
+          for (const item of data.data) {
             const title = item.attributes.title || 'No Title';
             const description = item.attributes.body?.value || 'No Description';
           
-            // Extract icon URL safely
-            const iconField = item.relationships.field_icon?.data?.meta?.uri?.url;
-
-            // Log the attempted image link
-            let imageUrl = iconField
-              ? `https://api.njitstudentmarketplace.me${iconField.replace(' ', '%20')}`
-              : '';
+            // Fetch the icon URL dynamically
+            const iconField = item.relationships.field_icon;
+            let imageUrl = await fetchIconURL(iconField);
           
-            console.log("Attempting image URL:", imageUrl || "No image URL found, using placeholder");
-            console.log("Full API Response:", data);
-            data.data.forEach(item => {
-              console.log("Field Icon Relationship:", item.relationships.field_icon);
-            });
-
-            // Fallback to placeholder if no valid URL
-            imageUrl = imageUrl || 'https://api.njitstudentmarketplace.me/images/placeholder.png';
+            // Construct the full image URL if available
+            imageUrl = imageUrl
+              ? `https://api.njitstudentmarketplace.me${imageUrl}`
+              : 'https://via.placeholder.com/150?text=No+Image';
+          
+            console.log("Resolved Image URL:", imageUrl);
           
             // Create a benefit card
             const benefitCard = document.createElement('div');
@@ -144,13 +147,14 @@
             `;
             
             benefitsContainer.appendChild(benefitCard);
-          });
+          }
         })
         .catch(error => {
           console.error('Error fetching Benefits content:', error);
           document.getElementById('benefits-container').innerHTML = `
             <p style="text-align: center;">Error loading benefits. Please try again later.</p>`;
         });
+
 
   </script>
 </body>
