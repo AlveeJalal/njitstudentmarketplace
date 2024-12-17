@@ -117,8 +117,6 @@
       </div>      
   </section>
 
-
-
   <!-- Footer -->
   <footer>
     <div class="footer-wrapper">
@@ -171,18 +169,33 @@
   
         // Function to fetch related image URLs
         async function fetchImageURL(relationship) {
-          if (!relationship?.links?.related?.href) return null;
-  
+          if (!relationship?.links?.related?.href) {
+            console.warn("No related link for image found.");
+            return null;
+          }
+        
           const secureURL = relationship.links.related.href.replace(/^http:/, 'https:');
-  
+        
           try {
+            console.log("Fetching Image Relationship URL:", secureURL);
             const response = await fetch(secureURL);
-            if (!response.ok) return null;
-  
+            if (!response.ok) {
+              console.warn("Failed to fetch image relationship:", response.statusText);
+              return null;
+            }
+          
             const fileData = await response.json();
-            return fileData.data?.attributes?.uri?.url || null;
+            console.log("Image Resource Response:", fileData);
+          
+            const imagePath = fileData.data?.attributes?.uri?.url;
+            if (imagePath) {
+              return `https://api.njitstudentmarketplace.me${imagePath}`;
+            } else {
+              console.warn("No valid image URL found in response.");
+              return null;
+            }
           } catch (error) {
-            console.warn("Error fetching image URL:", error);
+            console.error("Error fetching image URL:", error);
             return null;
           }
         }
