@@ -844,3 +844,45 @@ input[type="range"]::-ms-track {
   margin-bottom: 1rem;
 }
 
+/* Catalog Section */
+.catalog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.catalog-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.catalog-card:hover {
+  transform: translateY(-5px);
+}
+
+.catalog-image img {
+  width: 100%;
+  height: auto;
+}
+
+.catalog-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.catalog-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.catalog-price {
+  font-size: 1rem;
+  color: #666;
+}
