@@ -1,122 +1,132 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NJIT Marketplace</title>
-<link rel="stylesheet" href="css/style.css">
+  <title>About - NJIT Marketplace</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+<body>
+<!-- Top Navigation -->
 <div class="topnav">
-  <a class="active" href="index.html">NJIT Marketplace</a>
-   
-    <div class="topnav-right">
-      <a href="about.html">About</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-      <form action="login.html" class ="loginbt">
-        <button  type = "submit" > Sign in
-    </form>
-    <form action="register.html" class ="registerbt">
-      <button type="submit" class="loginbt"> Register
-  </form>
+  <div class="logo">
+    <a href="index.html" class="site-title">NJIT Marketplace</a>
+  </div>
+  <nav class="navigation-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="about.html">About</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="auth-buttons">
+    <button class="signin-btn">Sign In</button>
+    <button class="register-btn">Register</button>
+  </div>
+</div>
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="https://assets.kompasiana.com/items/album/2019/07/26/photo-1522202176988-66273c2fd55f-5d3accc40d8230196d4b1492.jpg" 
+         alt="Students collaborating" class="hero-image">
+    <div class="hero-content">
+      <h1>Empower Your Academic Journey</h1>
+      <p>A Student-Centered Marketplace for All Your Needs.</p>
+      <p>
+        NJIT Marketplace is designed to support you and your peers by creating a reliable, trusted space to buy, sell, and trade academic resources. 
+        Whether you're saving money by buying used materials or making some cash back from your textbooks, this marketplace makes student life easier
+        and more affordable. Experience the convenience of a community-focused platform that’s built for students, by students.
+      </p>
+      <button>Get Started</button>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h2>What Our Students Say</h2>
+    <div class="testimonial-container" id="testimonial-container">
+      <!-- Testimonials dynamically fetched here -->
+    </div>
+  </section>
+
+  <!-- Getting Started Section -->
+  <section class="get-started">
+    <h3>Getting Started is Easy</h3>
+    <p>Follow these simple steps to connect with your campus community</p>
+    <div class="steps">
+      <button>Sign Up or Log In</button>
+      <button>Browse or List Items</button>
+      <button>Connect & Transact</button>
+      <button>Pick Up or Ship</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrapper">
+      <div class="footer-column contact-info">
+        <img src="/images/social_logo.png" alt="Social Logo">
+        <b><p>Contact Us</p></b>
+        <p>Email: support@njitmarketplace.com</p>
+        <p>Phone: (973) 596-3000</p>
+        <p>Office: NJIT Campus Center, Room 110</p>
+      </div>
+
+      <div class="footer-column">
+        <b><p>Use Cases</p></b>
+        <p>Academic Resources</p>
+        <p>Textbook Exchange</p>
+        <p>Campus Community</p>
+      </div>
+
+      <div class="footer-column">
+        <b><p>Resources</p></b>
+        <p>FAQs</p>
+        <p>Privacy Policy</p>
+        <p>Terms of Service</p>
+      </div>
+
+    <!-- Newsletter Subscription -->
+    <div class="footer-column newsletter" style="flex: 1; min-width: 250px;">
+      <b><p>Subscribe to Our Newsletter</p></b>
+      <input type="text" class="rounded-box-footer" name="email" placeholder="you@example.com" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid #ccc; border-radius: 5px;">
+      <button type="submit" class="subscribe-btn" style="padding: 0.5rem 1rem; background-color: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Subscribe</button>
     </div>
   </div>
+</footer>
 
-<br>
-  <main>
-    <section class="hero">
-
-      <div class="container">
-        <img src = "https://assets.kompasiana.com/items/album/2019/07/26/photo-1522202176988-66273c2fd55f-5d3accc40d8230196d4b1492.jpg?t=o&v=740&x=416" class="hero-image"/>
-        <h1>Empower Your Academic Journey</h1>
-
-        <p>
-          A Student-Centered Marketplace for All Your Needs. 
-        </p>
-
-        <p>
-            NJIT Marketplace is designed to support you and your peers by creating a reliable, trusted space to buy, sell, and trade academic resources. 
-            Whether you're saving money by buying used materials or making some cash back from your textbooks, this marketplace makes student life easier
-             and more affordable. Experience the convenience of a community-focused platform that’s built for students, by students.
-        </p>
-    </div>
-        <button>Get Started</button>
+  <!-- Fetch Testimonials -->
+  <script>
+      fetch('https://api.njitstudentmarketplace.me/jsonapi/node/testimonials')
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById('testimonial-container');
+          container.innerHTML = ''; // Clear current content
         
-      </div>
-    </section>
-    <h2>What Our Students Say</h2>
-    <section class="testimonials">
-        <div class="cards">
-          <div class="card">
-            <p>
-              "The NJIT Marketplace has been a game-changer. I found my textbooks
-              at affordable prices and even sold my old ones quickly!"
-            </p>
-            <h4>Sarah L.</h4>
-            <p>Mechanical Engineering, Class of 2025</p>
-          </div>
-          <div class="card">
-            <p>
-              "I love how easy it is to connect with other students here. It's like
-              having a personal marketplace where everyone understands student budgets."
-            </p>
-            <h4>Jacob M.</h4>
-            <p>Computer Science, Class of 2024</p>
-          </div>
-          <div class="card">
-            <p>
-              "This platform has saved me so much time and money. I recommend it
-              to anyone who needs affordable resources."
-            </p>
-            <h4>Emily T.</h4>
-            <p>Business Administration, Class of 2023</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="get-started">
-        <div class="container">
-
-            <h3>Getting Started is Easy</h3>
-            Follow these simple steps to connect with your campus community<br> <br>
-                Sign Up or Log In <br> <br>
-                Browse or List Items<br> <br>
-                Connect & Transact<br> <br>
-                Pick Up or Ship<br> <br>
-              
-            </div>
-            </section>
-
-            <!-- maybe grab content from drupal and paste here for footer? maybe not-->
-            <footer>
-              <div id="wrapper">
-                  <div class="contact-info">
-                    <img src="/images/social_logo.png"/>
-                    <b><p>Contact Us</p></b>
-                    <p>Email: support@njitmarketplace.com</p>
-                    <p>Phone: (973) 596-3000</p>
-                    <p>Office: NJIT Campus Center, Room 110</p>
-                  </div>
-                  <div class="use-cases">
-                    <b><p>Use Cases</p></b>
-                    <p>Academic Resources</p>
-                    <p>Textbook Exchange</p>
-                    <p>Campus Community</p>
-                    </div>
-                    <div class="use-cases">
-                      <b><p>Resources</p></b>
-                      <p>FAQS</p>
-                      <p>Privacy Policy</p>
-                      <p>Terms of Service</p>
-                      </div>
-                  </div>
-
-                
-                  </div>
-                  <div class="topnav-right">
-              <input type="text" class="rounded-box-footer"  name="email" value="you@example.com"/> 
-              
-              <button  type = "submit" class="signinbt"> Subscribe
-                  </div>
+          data.data.forEach(item => {
+            // Strip HTML tags from body
+            const rawQuote = item.attributes.body?.value || "No testimonial provided.";
+            const sanitizedQuote = rawQuote.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML tags
+          
+            const name = item.attributes.title || "Anonymous";
+            const classYear = item.attributes.field_class_year || "N/A";
+          
+            const testimonial = `
+              <div class="testimonial-card">
+                <p>${sanitizedQuote}</p>
+                <div class="testimonial-author">
+                  <h4>${name}</h4>
+                  <small>Class of ${classYear}</small>
                 </div>
-              </footer>
-        </html>
+              </div>
+            `;
+            container.innerHTML += testimonial;
+          });
+        })
+        .catch(error => {
+          console.error("Error fetching testimonials:", error);
+          document.getElementById('testimonial-container').innerHTML = `<p>Error loading testimonials.</p>`;
+        });
+  </script>
+</body>
+</html>
