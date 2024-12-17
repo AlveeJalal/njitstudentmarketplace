@@ -173,9 +173,9 @@
             console.warn("No related link for image found.");
             return null;
           }
-        
+  
           const secureURL = relationship.links.related.href.replace(/^http:/, 'https:');
-        
+  
           try {
             console.log("Fetching Image Relationship URL:", secureURL);
             const response = await fetch(secureURL);
@@ -183,10 +183,10 @@
               console.warn("Failed to fetch image relationship:", response.statusText);
               return null;
             }
-          
+  
             const fileData = await response.json();
             console.log("Image Resource Response:", fileData);
-          
+  
             const imagePath = fileData.data?.attributes?.uri?.url;
             if (imagePath) {
               return `https://api.njitstudentmarketplace.me${imagePath}`;
@@ -204,14 +204,14 @@
         for (const item of data.data) {
           const title = item.attributes.title || 'No Title';
           const price = item.attributes.field_price || 'N/A';
-          const imageField = item.relationships.field_image;
+          const imageField = item.relationships.field_item_image;
   
           // Fetch the image URL dynamically
           let imageUrl = await fetchImageURL(imageField);
   
-          // Construct the full image URL or fallback to placeholder
+          // Fallback to placeholder if no image URL is found
           imageUrl = imageUrl
-            ? `https://api.njitstudentmarketplace.me${imageUrl}`
+            ? imageUrl
             : 'https://via.placeholder.com/150?text=No+Image';
   
           console.log("Resolved Image URL:", imageUrl);
@@ -219,14 +219,26 @@
           // Create a catalog card
           const catalogCard = document.createElement('div');
           catalogCard.className = 'catalog-card';
+          catalogCard.style = `
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 15px;
+            width: 30%;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+            background-color: #fff;
+          `;
   
           catalogCard.innerHTML = `
-            <div class="catalog-image">
-              <img src="${imageUrl}" alt="${title}" style="width: 100%; height: auto;" />
+            <div class="catalog-image" style="margin-bottom: 10px;">
+              <img src="${imageUrl}" alt="${title}" style="max-width: 100%; height: auto; border-radius: 4px;" />
             </div>
             <div class="catalog-text">
-              <h3>${title}</h3>
-              <p><strong>Price: $${price}</strong></p>
+              <h3 style="margin: 0 0 10px;">${title}</h3>
+              <p style="font-weight: bold; color: #333;">Price: $${price}</p>
             </div>
           `;
   
