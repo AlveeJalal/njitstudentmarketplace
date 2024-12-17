@@ -11,5 +11,5 @@
 .vim*
 elk/logs
 postgres/logs
-traefic/logs
+traefik/logs
 .env

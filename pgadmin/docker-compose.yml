@@ -10,7 +10,6 @@ services:
       # set up environment variables for login
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL} 
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-
     networks:
        - traefik
        - backend

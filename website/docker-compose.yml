@@ -8,6 +8,7 @@ services:
     restart: always
     volumes:
       - ./public-html/css:/app/css
+      - ./public-html:/usr/local/apache2/htdocs
     networks:
        - traefik
        - backend
