@@ -112,11 +112,18 @@
             const title = item.attributes.title || 'No Title';
             const description = item.attributes.body?.value || 'No Description';
           
-            // Extract icon URL safely and fix spaces in file names
+            // Extract icon URL safely
             const iconField = item.relationships.field_icon?.data?.meta?.uri?.url;
-            const imageUrl = iconField
+
+            // Log the attempted image link
+            let imageUrl = iconField
               ? `https://api.njitstudentmarketplace.me${iconField.replace(' ', '%20')}`
-              : 'https://api.njitstudentmarketplace.me/images/placeholder.png';
+              : '';
+          
+            console.log("Attempting image URL:", imageUrl || "No image URL found, using placeholder");
+          
+            // Fallback to placeholder if no valid URL
+            imageUrl = imageUrl || 'https://api.njitstudentmarketplace.me/images/placeholder.png';
           
             // Create a benefit card
             const benefitCard = document.createElement('div');
@@ -140,6 +147,7 @@
           document.getElementById('benefits-container').innerHTML = `
             <p style="text-align: center;">Error loading benefits. Please try again later.</p>`;
         });
+
   </script>
 </body>
 </html>
