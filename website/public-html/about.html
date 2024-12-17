@@ -99,27 +99,36 @@
 
   <!-- Fetch Testimonials -->
   <script>
-    fetch('https://api.njitstudentmarketplace.me/jsonapi/node/testimonials')
-      .then(response => response.json())
-      .then(data => {
-        const container = document.getElementById('testimonial-container');
-        container.innerHTML = ''; // Clear current content
-
-        data.data.forEach(item => {
-          const testimonial = `
-            <div class="testimonial-card">
-              <p>"${item.attributes.body?.value}"</p>
-              <h4>${item.attributes.title}</h4>
-              <small>${item.attributes.field_class_year}</small>
-            </div>
-          `;
-          container.innerHTML += testimonial;
+      fetch('https://api.njitstudentmarketplace.me/jsonapi/node/testimonials')
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById('testimonial-container');
+          container.innerHTML = ''; // Clear current content
+        
+          data.data.forEach(item => {
+            // Strip HTML tags from body
+            const rawQuote = item.attributes.body?.value || "No testimonial provided.";
+            const sanitizedQuote = rawQuote.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML tags
+          
+            const name = item.attributes.title || "Anonymous";
+            const classYear = item.attributes.field_class_year || "N/A";
+          
+            const testimonial = `
+              <div class="testimonial-card">
+                <p>${sanitizedQuote}</p>
+                <div class="testimonial-author">
+                  <h4>${name}</h4>
+                  <small>Class of ${classYear}</small>
+                </div>
+              </div>
+            `;
+            container.innerHTML += testimonial;
+          });
+        })
+        .catch(error => {
+          console.error("Error fetching testimonials:", error);
+          document.getElementById('testimonial-container').innerHTML = `<p>Error loading testimonials.</p>`;
         });
-      })
-      .catch(error => {
-        console.error("Error fetching testimonials:", error);
-        document.getElementById('testimonial-container').innerHTML = `<p>Error loading testimonials.</p>`;
-      });
   </script>
 </body>
 </html>
