@@ -26,7 +26,7 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <img src="https://assets.kompasiana.com/items/album/2019/07/26/photo-1522202176988-66273c2fd55f-5d3accc40d8230196d4b1492.jpg?t=o&v=740&x=416" 
+    <img src="https://assets.kompasiana.com/items/album/2019/07/26/photo-1522202176988-66273c2fd55f-5d3accc40d8230196d4b1492.jpg" 
          alt="Students collaborating" class="hero-image">
     <div class="hero-content">
       <h1>Empower Your Academic Journey</h1>
@@ -60,85 +60,65 @@
     </div>
   </section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-wrapper" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; padding: 2rem; background-color: #f9f9f9; border-top: 1px solid #ddd;">
-    <!-- Contact Information -->
-    <div class="footer-column contact-info" style="flex: 1; min-width: 250px;">
-      <img src="/images/social_logo.png" alt="Social Logo" style="margin-bottom: 1rem;">
-      <b><p>Contact Us</p></b>
-      <p>Email: support@njitmarketplace.com</p>
-      <p>Phone: (973) 596-3000</p>
-      <p>Office: NJIT Campus Center, Room 110</p>
-    </div>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrapper">
+      <!-- Contact Information -->
+      <div class="footer-column contact-info">
+        <img src="/images/social_logo.png" alt="Social Logo">
+        <b><p>Contact Us</p></b>
+        <p>Email: support@njitmarketplace.com</p>
+        <p>Phone: (973) 596-3000</p>
+        <p>Office: NJIT Campus Center, Room 110</p>
+      </div>
 
-    <!-- Use Cases -->
-    <div class="footer-column" style="flex: 1; min-width: 250px;">
-      <b><p>Use Cases</p></b>
-      <p>Academic Resources</p>
-      <p>Textbook Exchange</p>
-      <p>Campus Community</p>
-    </div>
+      <!-- Use Cases -->
+      <div class="footer-column">
+        <b><p>Use Cases</p></b>
+        <p>Academic Resources</p>
+        <p>Textbook Exchange</p>
+        <p>Campus Community</p>
+      </div>
 
-    <!-- Resources -->
-    <div class="footer-column" style="flex: 1; min-width: 250px;">
-      <b><p>Resources</p></b>
-      <p>FAQs</p>
-      <p>Privacy Policy</p>
-      <p>Terms of Service</p>
-    </div>
+      <!-- Resources -->
+      <div class="footer-column">
+        <b><p>Resources</p></b>
+        <p>FAQs</p>
+        <p>Privacy Policy</p>
+        <p>Terms of Service</p>
+      </div>
 
-    <!-- Newsletter Subscription -->
-    <div class="footer-column newsletter" style="flex: 1; min-width: 250px;">
-      <b><p>Subscribe to Our Newsletter</p></b>
-      <input type="text" class="rounded-box-footer" name="email" placeholder="you@example.com" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid #ccc; border-radius: 5px;">
-      <button type="submit" class="subscribe-btn" style="padding: 0.5rem 1rem; background-color: #000; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Subscribe</button>
+      <!-- Newsletter -->
+      <div class="footer-column newsletter">
+        <b><p>Subscribe to Our Newsletter</p></b>
+        <input type="text" class="rounded-box-footer" placeholder="you@example.com">
+        <button type="submit" class="subscribe-btn">Subscribe</button>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-  <!-- JavaScript to Fetch Testimonials -->
+  <!-- Fetch Testimonials -->
   <script>
-    console.log("Fetching Testimonials...");
-
     fetch('https://api.njitstudentmarketplace.me/jsonapi/node/testimonials')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
-        console.log("Fetch complete:", data);
-        const testimonialContainer = document.getElementById('testimonial-container');
+        const container = document.getElementById('testimonial-container');
+        container.innerHTML = ''; // Clear current content
 
-        // Clear existing content
-        testimonialContainer.innerHTML = '';
-
-        // Populate testimonials dynamically
         data.data.forEach(item => {
-          const name = item.attributes.title || 'Unknown Student';
-          const testimonial = item.attributes.body?.value || 'No testimonial provided.';
-          const classYear = item.attributes.field_class_year || 'N/A';
-
-          // Create testimonial card
-          const card = document.createElement('div');
-          card.className = 'testimonial-card';
-
-          card.innerHTML = `
-            <p>"${testimonial}"</p>
-            <h4>${name}</h4>
-            <small>${classYear}</small>
+          const testimonial = `
+            <div class="testimonial-card">
+              <p>"${item.attributes.body?.value}"</p>
+              <h4>${item.attributes.title}</h4>
+              <small>${item.attributes.field_class_year}</small>
+            </div>
           `;
-
-          testimonialContainer.appendChild(card);
+          container.innerHTML += testimonial;
         });
       })
       .catch(error => {
         console.error("Error fetching testimonials:", error);
-        document.getElementById('testimonial-container').innerHTML = `
-          <p>Error loading testimonials. Please try again later.</p>
-        `;
+        document.getElementById('testimonial-container').innerHTML = `<p>Error loading testimonials.</p>`;
       });
   </script>
 </body>
