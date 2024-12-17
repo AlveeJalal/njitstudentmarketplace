@@ -92,7 +92,7 @@
   <!-- JavaScript to Fetch Benefits -->
   <script>
       console.log("Fetching Benefits content...");
-        
+
       fetch('https://api.njitstudentmarketplace.me/jsonapi/node/benefits')
         .then(response => {
           if (!response.ok) {
@@ -110,8 +110,13 @@
           // Function to fetch related file resource
           async function fetchIconURL(relationship) {
             if (!relationship?.links?.related?.href) return null;
-            const response = await fetch(relationship.links.related.href);
+          
+            // Ensure the URL uses HTTPS
+            const secureURL = relationship.links.related.href.replace(/^http:/, 'https:');
+          
+            const response = await fetch(secureURL);
             if (!response.ok) return null;
+          
             const fileData = await response.json();
             return fileData.data?.attributes?.uri?.url || null;
           }
