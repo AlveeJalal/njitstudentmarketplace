@@ -1006,7 +1006,7 @@ body {
   color: #fff;
 }
 
-/* Header Navigation */
+/* Top Navigation */
 .topnav {
   display: flex;
   justify-content: space-between;
@@ -1014,8 +1014,10 @@ body {
   padding: 10px 20px;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 }
 
+/* Logo Section */
 .logo {
   display: flex;
   align-items: center;
@@ -1033,6 +1035,7 @@ body {
   color: #333;
 }
 
+/* Navigation Links */
 .navigation-links {
   display: flex;
   gap: 20px;
@@ -1049,6 +1052,7 @@ body {
   color: #555;
 }
 
+/* Auth Buttons */
 .auth-buttons {
   display: flex;
   gap: 10px;
@@ -1065,7 +1069,7 @@ body {
 }
 
 .signin-btn {
-  background-color: #ffffff;
+  background-color: #fff;
   border: 1px solid #ccc;
   color: #333;
 }
