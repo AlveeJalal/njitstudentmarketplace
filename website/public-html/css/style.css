@@ -918,10 +918,10 @@ body {
 
 /* Catalog Container */
 .catalog-container {
-  flex: 1; /* Allow catalog to take remaining space */
+  flex: 1; /* Allow it to take the remaining space */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid layout */
-  gap: 20px; /* Space between cards */
+  grid-template-columns: repeat(3, 1fr); /* Limit to 3 columns per row */
+  gap: 20px; /* Spacing between cards */
   padding: 15px;
   box-sizing: border-box;
 }
