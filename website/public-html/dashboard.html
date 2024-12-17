@@ -121,7 +121,11 @@
               : '';
           
             console.log("Attempting image URL:", imageUrl || "No image URL found, using placeholder");
-          
+            console.log("Full API Response:", data);
+            data.data.forEach(item => {
+              console.log("Field Icon Relationship:", item.relationships.field_icon);
+            });
+
             // Fallback to placeholder if no valid URL
             imageUrl = imageUrl || 'https://api.njitstudentmarketplace.me/images/placeholder.png';
           
