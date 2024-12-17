@@ -115,7 +115,7 @@
           // Extract icon URL safely (fallback to placeholder icon)
           const iconField = item.relationships.field_icon?.data?.meta?.uri?.url;
           const iconUrl = iconField
-            ? `https://api.njitstudentmarketplace.me${iconField.startsWith('/') ? iconField : `/${iconField}`}`
+            ? `https://api.njitstudentmarketplace.me${iconField.replace('/opt/drupal/web', '')}`
             : '/images/icon.png';
 
           // Create a benefit card
